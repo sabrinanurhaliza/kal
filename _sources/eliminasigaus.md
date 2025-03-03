@@ -3,7 +3,7 @@ title: eliminasigaus
 
 ---
 
-**Metode Eliminasi Gauss**
+# Metode Eliminasi Gauss
 
 Metode Eliminasi Gauss digunakan untuk menyelesaikan sistem persamaan linear dengan mengubah matriks koefisien menjadi bentuk eselon baris melalui operasi baris elementer. Bentuk eselon baris ini memudahkan kita dalam menyelesaikan variabel satu per satu (substitusi mundur).
 
