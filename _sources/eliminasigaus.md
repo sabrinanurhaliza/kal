@@ -1,5 +1,5 @@
 ---
-title: METODE ELIMINASI GAUSS
+title: eliminasigaus
 
 ---
 
