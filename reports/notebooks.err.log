@@ -1,0 +1,121 @@
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+##### Penyelesaian Sistem Persamaan Linear dengan Eliminasi Gauss}
+###### Diketahui sistem persamaan linear:
+$$\begin{aligned}  
+    x + y + z = 6 \\  
+    2x + 3y + z = 14 \\  
+    x - y + 2z = 8  
+\end{aligned}$$
+
+###### Penyelesaian
+1. Bentuk matriks augmented:
+
+$$\begin{bmatrix}  
+1 & 1 & 1 & |6 \\  
+2 & 3 & 1 & |14 \\  
+1 & -1 & 2 & |8  
+\end{bmatrix}$$
+
+2. Eliminasi Gauss
+Langkah 1: NOL-kan Elemen di bawah Elemen Pivot Pertama
+Pivot pertama adalah 1 di posisi (1,1). Kita buat elemen di bawahnya menjadi nol:
+
+\[
+R_2 \to R_2 - 2R_1
+\]
+\[
+R_3 \to R_3 - R_1
+\]
+
+Hasilnya:
+$$\begin{bmatrix}  
+1 & 1 & 1 & |6 \\  
+0 & 1 & -1 & |2 \\  
+0 & -2 & 1 & |2  
+\end{bmatrix}$$
+
+Langkah 2: NOL-kan Elemen di bawah Pivot Kedua
+Pivot kedua adalah 1 di posisi (2,2). Kita buat elemen di bawahnya menjadi nol:
+
+\[
+R_3 \to R_3 + 2R_2
+\]
+
+Hasilnya:
+$$\begin{bmatrix}  
+1 & 1 & 1 & |6 \\  
+0 & 1 & -1 & |2 \\  
+0 & 0 & -1 & |6  
+\end{bmatrix}$$
+
+Langkah 3: Buat Pivot Ketiga Menjadi 1
+\[
+R_3 \to -R_3
+\]
+
+Sehingga:
+$$\begin{bmatrix}  
+1 & 1 & 1 & |6 \\  
+0 & 1 & -1 & |2 \\  
+0 & 0 & 1 & |-6  
+\end{bmatrix}$$
+
+Substitusi Mundur (Back Substitution)
+Dari baris ketiga:
+\[
+z = -6
+\]
+
+Dari baris kedua:
+\[
+y - (-6) = 2 \quad \Rightarrow \quad y + 6 = 2 \quad \Rightarrow \quad y = -4
+\]
+
+Dari baris pertama:
+\[
+x + (-4) + (-6) = 6
+\]
+\[
+x - 4 - 6 = 6
+\]
+\[
+x = 16
+\]
+
+\section{Solusi Akhir}
+\[
+(x, y, z) = (16, -4, -6)
+\]
+
+\end{document}
+
+<iframe src="https://www.geogebra.org/classic/awrbqz32?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+------------------
+
+
+[0;36m  Cell [0;32mIn[1], line 3[0;36m[0m
+[0;31m    $$\begin{aligned}[0m
+[0m    ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+
+

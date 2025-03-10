@@ -60,7 +60,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Metode Eliminasi Gauss" href="eliminasigaus.html" />
     <link rel="prev" title="Welcome My Komputasi aljabar linier Book" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -181,7 +180,6 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SISTEM PERSAMAAN LINIER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eliminasigaus.html">Metode Eliminasi Gauss</a></li>
 </ul>
 
     </div>
@@ -382,6 +380,111 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="sistem-persamaan-linier">
 <h1>SISTEM PERSAMAAN LINIER<a class="headerlink" href="#sistem-persamaan-linier" title="Link to this heading">#</a></h1>
 <p>Adalah kumpulan dari dua atau lebih persamaan linier yang melibatkan variabel-variabel yang sama. Tujuan dari sistem persamaan linier adalah untuk menemukan nilai-nilai variabel yang memenuhi semua persamaan dalam sistem tersebut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### Penyelesaian Sistem Persamaan Linear dengan Eliminasi Gauss}</span>
+<span class="c1">###### Diketahui sistem persamaan linear:</span>
+<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">aligned</span><span class="p">}</span>  
+    <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">6</span> \\  
+    <span class="mi">2</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">14</span> \\  
+    <span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="n">z</span> <span class="o">=</span> <span class="mi">8</span>  
+\<span class="n">end</span><span class="p">{</span><span class="n">aligned</span><span class="p">}</span><span class="err">$$</span>
+
+<span class="c1">###### Penyelesaian</span>
+<span class="mf">1.</span> <span class="n">Bentuk</span> <span class="n">matriks</span> <span class="n">augmented</span><span class="p">:</span>
+
+<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>  
+<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span> \\  
+<span class="mi">2</span> <span class="o">&amp;</span> <span class="mi">3</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">14</span> \\  
+<span class="mi">1</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">2</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">8</span>  
+\<span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span><span class="err">$$</span>
+
+<span class="mf">2.</span> <span class="n">Eliminasi</span> <span class="n">Gauss</span>
+<span class="n">Langkah</span> <span class="mi">1</span><span class="p">:</span> <span class="n">NOL</span><span class="o">-</span><span class="n">kan</span> <span class="n">Elemen</span> <span class="n">di</span> <span class="n">bawah</span> <span class="n">Elemen</span> <span class="n">Pivot</span> <span class="n">Pertama</span>
+<span class="n">Pivot</span> <span class="n">pertama</span> <span class="n">adalah</span> <span class="mi">1</span> <span class="n">di</span> <span class="n">posisi</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span> <span class="n">Kita</span> <span class="n">buat</span> <span class="n">elemen</span> <span class="n">di</span> <span class="n">bawahnya</span> <span class="n">menjadi</span> <span class="n">nol</span><span class="p">:</span>
+
+\<span class="p">[</span>
+<span class="n">R_2</span> \<span class="n">to</span> <span class="n">R_2</span> <span class="o">-</span> <span class="mi">2</span><span class="n">R_1</span>
+\<span class="p">]</span>
+\<span class="p">[</span>
+<span class="n">R_3</span> \<span class="n">to</span> <span class="n">R_3</span> <span class="o">-</span> <span class="n">R_1</span>
+\<span class="p">]</span>
+
+<span class="n">Hasilnya</span><span class="p">:</span>
+<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>  
+<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span> \\  
+<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">2</span> \\  
+<span class="mi">0</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">2</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">2</span>  
+\<span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span><span class="err">$$</span>
+
+<span class="n">Langkah</span> <span class="mi">2</span><span class="p">:</span> <span class="n">NOL</span><span class="o">-</span><span class="n">kan</span> <span class="n">Elemen</span> <span class="n">di</span> <span class="n">bawah</span> <span class="n">Pivot</span> <span class="n">Kedua</span>
+<span class="n">Pivot</span> <span class="n">kedua</span> <span class="n">adalah</span> <span class="mi">1</span> <span class="n">di</span> <span class="n">posisi</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span> <span class="n">Kita</span> <span class="n">buat</span> <span class="n">elemen</span> <span class="n">di</span> <span class="n">bawahnya</span> <span class="n">menjadi</span> <span class="n">nol</span><span class="p">:</span>
+
+\<span class="p">[</span>
+<span class="n">R_3</span> \<span class="n">to</span> <span class="n">R_3</span> <span class="o">+</span> <span class="mi">2</span><span class="n">R_2</span>
+\<span class="p">]</span>
+
+<span class="n">Hasilnya</span><span class="p">:</span>
+<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>  
+<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span> \\  
+<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">2</span> \\  
+<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span>  
+\<span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span><span class="err">$$</span>
+
+<span class="n">Langkah</span> <span class="mi">3</span><span class="p">:</span> <span class="n">Buat</span> <span class="n">Pivot</span> <span class="n">Ketiga</span> <span class="n">Menjadi</span> <span class="mi">1</span>
+\<span class="p">[</span>
+<span class="n">R_3</span> \<span class="n">to</span> <span class="o">-</span><span class="n">R_3</span>
+\<span class="p">]</span>
+
+<span class="n">Sehingga</span><span class="p">:</span>
+<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>  
+<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span> \\  
+<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">2</span> \\  
+<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|-</span><span class="mi">6</span>  
+\<span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span><span class="err">$$</span>
+
+<span class="n">Substitusi</span> <span class="n">Mundur</span> <span class="p">(</span><span class="n">Back</span> <span class="n">Substitution</span><span class="p">)</span>
+<span class="n">Dari</span> <span class="n">baris</span> <span class="n">ketiga</span><span class="p">:</span>
+\<span class="p">[</span>
+<span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>
+\<span class="p">]</span>
+
+<span class="n">Dari</span> <span class="n">baris</span> <span class="n">kedua</span><span class="p">:</span>
+\<span class="p">[</span>
+<span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> \<span class="n">quad</span> \<span class="n">Rightarrow</span> \<span class="n">quad</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">=</span> <span class="mi">2</span> \<span class="n">quad</span> \<span class="n">Rightarrow</span> \<span class="n">quad</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+\<span class="p">]</span>
+
+<span class="n">Dari</span> <span class="n">baris</span> <span class="n">pertama</span><span class="p">:</span>
+\<span class="p">[</span>
+<span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="mi">6</span>
+\<span class="p">]</span>
+\<span class="p">[</span>
+<span class="n">x</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">=</span> <span class="mi">6</span>
+\<span class="p">]</span>
+\<span class="p">[</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">16</span>
+\<span class="p">]</span>
+
+\<span class="n">section</span><span class="p">{</span><span class="n">Solusi</span> <span class="n">Akhir</span><span class="p">}</span>
+\<span class="p">[</span>
+<span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span>
+\<span class="p">]</span>
+
+\<span class="n">end</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="n">iframe</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://www.geogebra.org/classic/awrbqz32?embed&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;800&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="n">allowfullscreen</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;border: 1px solid #e4e4e4;border-radius: 4px;&quot;</span> <span class="n">frameborder</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="o">&gt;&lt;/</span><span class="n">iframe</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+    <span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">aligned</span><span class="p">}</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -422,15 +525,6 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Welcome My Komputasi aljabar linier Book</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="eliminasigaus.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Metode Eliminasi Gauss</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
