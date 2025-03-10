@@ -6,8 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; My kal book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Metode Eliminasi Gauss &#8212; My kal book</title>
   
   
   
@@ -56,9 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
-    <link rel="index" title="Index" href="#" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'metodeeliminasigaus';</script>
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="SISTEM PERSAMAAN LINIER" href="notebooks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -178,9 +178,9 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">SISTEM PERSAMAAN LINIER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metodeeliminasigaus.html">Metode Eliminasi Gauss</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Metode Eliminasi Gauss</a></li>
 </ul>
 
     </div>
@@ -252,7 +252,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmetodeeliminasigaus.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -264,6 +264,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/metodeeliminasigaus.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -316,7 +364,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Metode Eliminasi Gauss</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -330,13 +378,72 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
+  <section class="tex2jax_ignore mathjax_ignore" id="metode-eliminasi-gauss">
+<h1>Metode Eliminasi Gauss<a class="headerlink" href="#metode-eliminasi-gauss" title="Link to this heading">#</a></h1>
+<p>Metode Eliminasi Gauss digunakan untuk menyelesaikan sistem persamaan linear dengan mengubah matriks koefisien menjadi bentuk eselon baris melalui operasi baris elementer. Bentuk eselon baris ini memudahkan kita dalam menyelesaikan variabel satu per satu (substitusi mundur).</p>
+<p>Berikut adalah langkah-langkah menyelesaikan sistem persamaan linear menggunakan metode eliminasi Gauss, serta menampilkan solusinya secara grafis menggunakan GeoGebra</p>
+<p>Sistem Persamaan Linear yang Digunakan</p>
+<p>x + y + z = 6</p>
+<p>2x + 3y + z = 14</p>
+<p>x − y + 2z = 8</p>
+<p>Matriksnya, yaitu:</p>
+<p>1  1  1 | 6</p>
+<p>2  3  1 | 14</p>
+<p>1 -1  2 | 8</p>
+<p>Eliminasi Gauss (Operasi Baris)</p>
+<p><strong>Langkah 1: NOL-kan Elemen di bawah Elemen Pivot Pertama</strong></p>
+<p>Pivot pertama sudah 1 di posisi (1,1). Kita buat elemen di bawahnya menjadi nol:</p>
+<p>R₂ → R₂ - 2R₁</p>
+<p>R₃ → R₃ - R₁</p>
+<p>Hasilnya:</p>
+<p>1  1  1 | 6</p>
+<p>0  1 -1 | 2</p>
+<p>0 -2  1 | 2</p>
+<p>Langkah 2: NOL-kan Elemen di bawah Pivot Kedua</p>
+<p>Pivot kedua adalah 1 di posisi (2,2). Kita buat elemen di bawahnya menjadi nol:</p>
+<p>R₃ → R₃ + 2R₂</p>
+<p>Hasilnya:</p>
+<p>1  1  1 | 6</p>
+<p>0  1 -1 | 2</p>
+<p>0  0 -1 | 6</p>
+<p>Langkah 3: Buat Pivot Ketiga Menjadi 1</p>
+<p>Kita buat pivot ketiga menjadi 1:</p>
+<p>R₃ → -R₃</p>
+<p>Hasilnya:</p>
+<p>1  1  1 | 6</p>
+<p>0  1 -1 | 2</p>
+<p>0  0  1 | -6</p>
+<p>Back Substitution (Substitusi Mundur)</p>
+<p>Dari baris ketiga:</p>
+<p>z = −6</p>
+<p>Dari baris kedua:</p>
+<p>y − (−6) = 2 ⇒ y + 6 = 2 ⇒ y = −4</p>
+<p>Dari baris pertama:</p>
+<p>x + (−4) + (−6) = 6 ⇒ x − 4 − 6 = 6 ⇒ x = 16</p>
+<p>Jadi, hasilnya adalah:</p>
+<p>x = 16, y = −4, z = −6</p>
+<iframe src="https://www.geogebra.org/classic/awrbqz32?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+</section>
 
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
-</div>
-
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -348,6 +455,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="notebooks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SISTEM PERSAMAAN LINIER</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
