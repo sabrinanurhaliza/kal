@@ -400,50 +400,48 @@ document.write(`
 <h2>Penyelesaian Sistem Persamaan Linear dengan Eliminasi Gauss<a class="headerlink" href="#penyelesaian-sistem-persamaan-linear-dengan-eliminasi-gauss" title="Link to this heading">#</a></h2>
 <section id="diketahui-sistem-persamaan-linear">
 <h3>Diketahui sistem persamaan linear:<a class="headerlink" href="#diketahui-sistem-persamaan-linear" title="Link to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}  
+<p><span class="math notranslate nohighlight">\(\begin{aligned}  
     x + y + z = 6 \\  
     2x + 3y + z = 14 \\  
     x - y + 2z = 8  
-\end{aligned}\end{split}\]</div>
+\end{aligned}\)</span></p>
 </section>
 <section id="penyelesaian">
 <h3>Penyelesaian<a class="headerlink" href="#penyelesaian" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Bentuk matriks augmented:</p></li>
 </ol>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix}  
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix}  
 1 &amp; 1 &amp; 1 &amp; |6 \\  
 2 &amp; 3 &amp; 1 &amp; |14 \\  
 1 &amp; -1 &amp; 2 &amp; |8  
-\end{bmatrix}\end{split}\]</div>
+\end{bmatrix}\)</span></p>
 <ol class="arabic simple" start="2">
 <li><p>Eliminasi Gauss
 Langkah 1: NOL-kan Elemen di bawah Elemen Pivot Pertama
 Pivot pertama adalah 1 di posisi (1,1). Kita buat elemen di bawahnya menjadi nol:</p></li>
 </ol>
 <p>Hasilnya:
-$<span class="math notranslate nohighlight">\(\begin{bmatrix}  
+<span class="math notranslate nohighlight">\(\begin{bmatrix}  
 1 &amp; 1 &amp; 1 &amp; |6 \\  
 0 &amp; 1 &amp; -1 &amp; |2 \\  
 0 &amp; -2 &amp; 1 &amp; |2  
-\end{bmatrix}\)</span>$</p>
+\end{bmatrix}\)</span></p>
 <p>Langkah 2: NOL-kan Elemen di bawah Pivot Kedua
 Pivot kedua adalah 1 di posisi (2,2). Kita buat elemen di bawahnya menjadi nol:</p>
 <p>Hasilnya:
-$<span class="math notranslate nohighlight">\(\begin{bmatrix}  
+<span class="math notranslate nohighlight">\(\begin{bmatrix}  
 1 &amp; 1 &amp; 1 &amp; |6 \\  
 0 &amp; 1 &amp; -1 &amp; |2 \\  
 0 &amp; 0 &amp; -1 &amp; |6  
-\end{bmatrix}\)</span>$</p>
+\end{bmatrix}\)</span></p>
 <p>Langkah 3: Buat Pivot Ketiga Menjadi 1</p>
 <p>Sehingga:
-$<span class="math notranslate nohighlight">\(\begin{bmatrix}  
+<span class="math notranslate nohighlight">\(\begin{bmatrix}  
 1 &amp; 1 &amp; 1 &amp; |6 \\  
 0 &amp; 1 &amp; -1 &amp; |2 \\  
 0 &amp; 0 &amp; 1 &amp; |-6  
-\end{bmatrix}\)</span>$</p>
+\end{bmatrix}\)</span></p>
 <p>Substitusi Mundur (Back Substitution)
 Dari baris ketiga:</p>
 <p>z = -6</p>
