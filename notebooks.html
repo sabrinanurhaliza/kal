@@ -57,9 +57,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="METODE ELIMINASI GAUS" href="metodeeliminasigaus.html" />
     <link rel="prev" title="Welcome My Komputasi aljabar linier Book" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,6 +183,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SISTEM PERSAMAAN LINIER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodeeliminasigaus.html">METODE ELIMINASI GAUS</a></li>
 </ul>
 
     </div>
@@ -352,7 +356,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -368,6 +374,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-sistem-persamaan-linear-dengan-eliminasi-gauss">Penyelesaian Sistem Persamaan Linear dengan Eliminasi Gauss}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diketahui-sistem-persamaan-linear">Diketahui sistem persamaan linear:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian">Penyelesaian</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -380,111 +398,85 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="sistem-persamaan-linier">
 <h1>SISTEM PERSAMAAN LINIER<a class="headerlink" href="#sistem-persamaan-linier" title="Link to this heading">#</a></h1>
 <p>Adalah kumpulan dari dua atau lebih persamaan linier yang melibatkan variabel-variabel yang sama. Tujuan dari sistem persamaan linier adalah untuk menemukan nilai-nilai variabel yang memenuhi semua persamaan dalam sistem tersebut.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### Penyelesaian Sistem Persamaan Linear dengan Eliminasi Gauss}</span>
-<span class="c1">###### Diketahui sistem persamaan linear:</span>
-<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">aligned</span><span class="p">}</span>  
-    <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">6</span> \\  
-    <span class="mi">2</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">14</span> \\  
-    <span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="n">z</span> <span class="o">=</span> <span class="mi">8</span>  
-\<span class="n">end</span><span class="p">{</span><span class="n">aligned</span><span class="p">}</span><span class="err">$$</span>
-
-<span class="c1">###### Penyelesaian</span>
-<span class="mf">1.</span> <span class="n">Bentuk</span> <span class="n">matriks</span> <span class="n">augmented</span><span class="p">:</span>
-
-<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>  
-<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span> \\  
-<span class="mi">2</span> <span class="o">&amp;</span> <span class="mi">3</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">14</span> \\  
-<span class="mi">1</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">2</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">8</span>  
-\<span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span><span class="err">$$</span>
-
-<span class="mf">2.</span> <span class="n">Eliminasi</span> <span class="n">Gauss</span>
-<span class="n">Langkah</span> <span class="mi">1</span><span class="p">:</span> <span class="n">NOL</span><span class="o">-</span><span class="n">kan</span> <span class="n">Elemen</span> <span class="n">di</span> <span class="n">bawah</span> <span class="n">Elemen</span> <span class="n">Pivot</span> <span class="n">Pertama</span>
-<span class="n">Pivot</span> <span class="n">pertama</span> <span class="n">adalah</span> <span class="mi">1</span> <span class="n">di</span> <span class="n">posisi</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span> <span class="n">Kita</span> <span class="n">buat</span> <span class="n">elemen</span> <span class="n">di</span> <span class="n">bawahnya</span> <span class="n">menjadi</span> <span class="n">nol</span><span class="p">:</span>
-
-\<span class="p">[</span>
-<span class="n">R_2</span> \<span class="n">to</span> <span class="n">R_2</span> <span class="o">-</span> <span class="mi">2</span><span class="n">R_1</span>
-\<span class="p">]</span>
-\<span class="p">[</span>
-<span class="n">R_3</span> \<span class="n">to</span> <span class="n">R_3</span> <span class="o">-</span> <span class="n">R_1</span>
-\<span class="p">]</span>
-
-<span class="n">Hasilnya</span><span class="p">:</span>
-<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>  
-<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span> \\  
-<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">2</span> \\  
-<span class="mi">0</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">2</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">2</span>  
-\<span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span><span class="err">$$</span>
-
-<span class="n">Langkah</span> <span class="mi">2</span><span class="p">:</span> <span class="n">NOL</span><span class="o">-</span><span class="n">kan</span> <span class="n">Elemen</span> <span class="n">di</span> <span class="n">bawah</span> <span class="n">Pivot</span> <span class="n">Kedua</span>
-<span class="n">Pivot</span> <span class="n">kedua</span> <span class="n">adalah</span> <span class="mi">1</span> <span class="n">di</span> <span class="n">posisi</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span> <span class="n">Kita</span> <span class="n">buat</span> <span class="n">elemen</span> <span class="n">di</span> <span class="n">bawahnya</span> <span class="n">menjadi</span> <span class="n">nol</span><span class="p">:</span>
-
-\<span class="p">[</span>
-<span class="n">R_3</span> \<span class="n">to</span> <span class="n">R_3</span> <span class="o">+</span> <span class="mi">2</span><span class="n">R_2</span>
-\<span class="p">]</span>
-
-<span class="n">Hasilnya</span><span class="p">:</span>
-<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>  
-<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span> \\  
-<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">2</span> \\  
-<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span>  
-\<span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span><span class="err">$$</span>
-
-<span class="n">Langkah</span> <span class="mi">3</span><span class="p">:</span> <span class="n">Buat</span> <span class="n">Pivot</span> <span class="n">Ketiga</span> <span class="n">Menjadi</span> <span class="mi">1</span>
-\<span class="p">[</span>
-<span class="n">R_3</span> \<span class="n">to</span> <span class="o">-</span><span class="n">R_3</span>
-\<span class="p">]</span>
-
-<span class="n">Sehingga</span><span class="p">:</span>
-<span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span>  
-<span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">6</span> \\  
-<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|</span><span class="mi">2</span> \\  
-<span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="o">|-</span><span class="mi">6</span>  
-\<span class="n">end</span><span class="p">{</span><span class="n">bmatrix</span><span class="p">}</span><span class="err">$$</span>
-
-<span class="n">Substitusi</span> <span class="n">Mundur</span> <span class="p">(</span><span class="n">Back</span> <span class="n">Substitution</span><span class="p">)</span>
-<span class="n">Dari</span> <span class="n">baris</span> <span class="n">ketiga</span><span class="p">:</span>
-\<span class="p">[</span>
-<span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>
-\<span class="p">]</span>
-
-<span class="n">Dari</span> <span class="n">baris</span> <span class="n">kedua</span><span class="p">:</span>
-\<span class="p">[</span>
-<span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span> \<span class="n">quad</span> \<span class="n">Rightarrow</span> \<span class="n">quad</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">=</span> <span class="mi">2</span> \<span class="n">quad</span> \<span class="n">Rightarrow</span> \<span class="n">quad</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
-\<span class="p">]</span>
-
-<span class="n">Dari</span> <span class="n">baris</span> <span class="n">pertama</span><span class="p">:</span>
-\<span class="p">[</span>
-<span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="mi">6</span>
-\<span class="p">]</span>
-\<span class="p">[</span>
-<span class="n">x</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">=</span> <span class="mi">6</span>
-\<span class="p">]</span>
-\<span class="p">[</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">16</span>
-\<span class="p">]</span>
-
-\<span class="n">section</span><span class="p">{</span><span class="n">Solusi</span> <span class="n">Akhir</span><span class="p">}</span>
-\<span class="p">[</span>
-<span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span>
-\<span class="p">]</span>
-
-\<span class="n">end</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
-
-<span class="o">&lt;</span><span class="n">iframe</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://www.geogebra.org/classic/awrbqz32?embed&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;800&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="n">allowfullscreen</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;border: 1px solid #e4e4e4;border-radius: 4px;&quot;</span> <span class="n">frameborder</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="o">&gt;&lt;/</span><span class="n">iframe</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-    <span class="err">$$</span>\<span class="n">begin</span><span class="p">{</span><span class="n">aligned</span><span class="p">}</span>
-    <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
+<section id="penyelesaian-sistem-persamaan-linear-dengan-eliminasi-gauss">
+<h2>Penyelesaian Sistem Persamaan Linear dengan Eliminasi Gauss}<a class="headerlink" href="#penyelesaian-sistem-persamaan-linear-dengan-eliminasi-gauss" title="Link to this heading">#</a></h2>
+<section id="diketahui-sistem-persamaan-linear">
+<h3>Diketahui sistem persamaan linear:<a class="headerlink" href="#diketahui-sistem-persamaan-linear" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}  
+    x + y + z = 6 \\  
+    2x + 3y + z = 14 \\  
+    x - y + 2z = 8  
+\end{aligned}\end{split}\]</div>
+</section>
+<section id="penyelesaian">
+<h3>Penyelesaian<a class="headerlink" href="#penyelesaian" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Bentuk matriks augmented:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}  
+1 &amp; 1 &amp; 1 &amp; |6 \\  
+2 &amp; 3 &amp; 1 &amp; |14 \\  
+1 &amp; -1 &amp; 2 &amp; |8  
+\end{bmatrix}\end{split}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Eliminasi Gauss
+Langkah 1: NOL-kan Elemen di bawah Elemen Pivot Pertama
+Pivot pertama adalah 1 di posisi (1,1). Kita buat elemen di bawahnya menjadi nol:</p></li>
+</ol>
+<p>[
+R_2 \to R_2 - 2R_1
+]
+[
+R_3 \to R_3 - R_1
+]</p>
+<p>Hasilnya:
+$<span class="math notranslate nohighlight">\(\begin{bmatrix}  
+1 &amp; 1 &amp; 1 &amp; |6 \\  
+0 &amp; 1 &amp; -1 &amp; |2 \\  
+0 &amp; -2 &amp; 1 &amp; |2  
+\end{bmatrix}\)</span>$</p>
+<p>Langkah 2: NOL-kan Elemen di bawah Pivot Kedua
+Pivot kedua adalah 1 di posisi (2,2). Kita buat elemen di bawahnya menjadi nol:</p>
+<p>[
+R_3 \to R_3 + 2R_2
+]</p>
+<p>Hasilnya:
+$<span class="math notranslate nohighlight">\(\begin{bmatrix}  
+1 &amp; 1 &amp; 1 &amp; |6 \\  
+0 &amp; 1 &amp; -1 &amp; |2 \\  
+0 &amp; 0 &amp; -1 &amp; |6  
+\end{bmatrix}\)</span>$</p>
+<p>Langkah 3: Buat Pivot Ketiga Menjadi 1
+[
+R_3 \to -R_3
+]</p>
+<p>Sehingga:
+$<span class="math notranslate nohighlight">\(\begin{bmatrix}  
+1 &amp; 1 &amp; 1 &amp; |6 \\  
+0 &amp; 1 &amp; -1 &amp; |2 \\  
+0 &amp; 0 &amp; 1 &amp; |-6  
+\end{bmatrix}\)</span>$</p>
+<p>Substitusi Mundur (Back Substitution)
+Dari baris ketiga:
+[
+z = -6
+]</p>
+<p>Dari baris kedua:
+[
+y - (-6) = 2 \quad \Rightarrow \quad y + 6 = 2 \quad \Rightarrow \quad y = -4
+]</p>
+<p>Dari baris pertama:
+x + (-4) + (-6) = 6
+x - 4 - 6 = 6
+x = 16</p>
+<p>Solusi Akhir
+(x, y, z) = (16, -4, -6)</p>
+<p>\end{document}</p>
+<iframe src="https://www.geogebra.org/classic/awrbqz32?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -526,12 +518,40 @@ document.write(`
         <p class="prev-next-title">Welcome My Komputasi aljabar linier Book</p>
       </div>
     </a>
+    <a class="right-next"
+       href="metodeeliminasigaus.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">METODE ELIMINASI GAUS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-sistem-persamaan-linear-dengan-eliminasi-gauss">Penyelesaian Sistem Persamaan Linear dengan Eliminasi Gauss}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diketahui-sistem-persamaan-linear">Diketahui sistem persamaan linear:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian">Penyelesaian</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
