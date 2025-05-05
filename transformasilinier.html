@@ -386,8 +386,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aditivitas-penjumlahan">1. Aditivitas (Penjumlahan)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homogenitas-perkalian-skalar">2. Homogenitas (Perkalian Skalar)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembuktian">Pembuktian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aditivitas">1. Aditivitas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homogenitas">2. Homogenitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-verifikasi-aditivitas">Langkah 1: Verifikasi Aditivitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-verifikasi-homogenitas">Langkah 2: Verifikasi Homogenitas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan:</a></li>
 </ul>
             </nav>
@@ -404,12 +404,7 @@ document.write(`
 <h1>TRANSFORMASI LINIER<a class="headerlink" href="#transformasi-linier" title="Link to this heading">#</a></h1>
 <section id="pembuktian-transformasi-linier">
 <h2>Pembuktian Transformasi Linier<a class="headerlink" href="#pembuktian-transformasi-linier" title="Link to this heading">#</a></h2>
-<p>Misalkan terdapat suatu transformasi:</p>
-<div class="math notranslate nohighlight">
-\[
-T(v_1, v_2) = (v_1 + v_2, v_1)
-\]</div>
-<p>Kita ingin membuktikan bahwa <strong>(T)</strong> adalah <strong>Transformasi Linier</strong>.</p>
+<p>Kita akan membuktikan bahwa transformasi <span class="math notranslate nohighlight">\(T: \mathbb{R}^2 \rightarrow \mathbb{R}^2\)</span> yang didefinisikan oleh <span class="math notranslate nohighlight">\(T(v_1, v_2) = (v_1 + v_2, v_1)\)</span> adalah transformasi linear. Untuk membuktikannya, kita perlu memverifikasi dua sifat dasar transformasi linear:</p>
 </section>
 <section id="syarat-transformasi-linier">
 <h2>Syarat Transformasi Linier<a class="headerlink" href="#syarat-transformasi-linier" title="Link to this heading">#</a></h2>
@@ -421,6 +416,7 @@ T(v_1, v_2) = (v_1 + v_2, v_1)
 \[
  T(\mathbf{a} + \mathbf{b}) = T(\mathbf{a}) + T(\mathbf{b})
 \]</div>
+<p>untuk semua vektor <span class="math notranslate nohighlight">\(\mathbf{u}, \mathbf{v}\)</span> dalam ruang vektor domain.</p>
 </section>
 <section id="homogenitas-perkalian-skalar">
 <h2>2. Homogenitas (Perkalian Skalar)<a class="headerlink" href="#homogenitas-perkalian-skalar" title="Link to this heading">#</a></h2>
@@ -428,45 +424,47 @@ T(v_1, v_2) = (v_1 + v_2, v_1)
 \[
 T(c \cdot \mathbf{a}) = c \cdot T(\mathbf{a})
 \]</div>
+<p>untuk semua vektor <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> dalam ruang vektor domain dan semua skalar <span class="math notranslate nohighlight">\(c\)</span>.</p>
 </section>
 <section id="pembuktian">
 <h2>Pembuktian<a class="headerlink" href="#pembuktian" title="Link to this heading">#</a></h2>
 </section>
-<section id="aditivitas">
-<h2>1. Aditivitas<a class="headerlink" href="#aditivitas" title="Link to this heading">#</a></h2>
+<section id="langkah-1-verifikasi-aditivitas">
+<h2>Langkah 1: Verifikasi Aditivitas<a class="headerlink" href="#langkah-1-verifikasi-aditivitas" title="Link to this heading">#</a></h2>
 <p>Misalkan:
-$<span class="math notranslate nohighlight">\(
-\mathbf{a} = (a_1, a_2), \quad \mathbf{b} = (b_1, b_2)
-\)</span>$</p>
-<p>Hitung:
-$<span class="math notranslate nohighlight">\(
-T(\mathbf{a} + \mathbf{b}) = T(a_1 + b_1, a_2 + b_2) = ((a_1 + b_1) + (a_2 + b_2), a_1 + b_1)
-\)</span>$</p>
-<div class="math notranslate nohighlight">
-\[
-= (a_1 + a_2 + b_1 + b_2, a_1 + b_1)
-\]</div>
-<p>Sementara:
-$<span class="math notranslate nohighlight">\(
-T(\mathbf{a}) + T(\mathbf{b}) = (a_1 + a_2, a_1) + (b_1 + b_2, b_1) = (a_1 + a_2 + b_1 + b_2, a_1 + b_1)
-\)</span>$</p>
-<p>Maka:
-$<span class="math notranslate nohighlight">\(
-T(\mathbf{a} + \mathbf{b}) = T(\mathbf{a}) + T(\mathbf{b})
-\)</span>$</p>
+<span class="math notranslate nohighlight">\(\mathbf{u} = (u_1, u_2)\)</span> dan <span class="math notranslate nohighlight">\(\mathbf{v} = (v_1, v_2)\)</span> adalah dua vektor sembarang dalam <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
+<ul class="simple">
+<li><p>Hitung <span class="math notranslate nohighlight">\(T(\mathbf{u} + \mathbf{v})\)</span>:
+$<span class="math notranslate nohighlight">\(\mathbf{u} + \mathbf{v} = (u_1 + v_1, u_2 + v_2)\)</span><span class="math notranslate nohighlight">\(
+  \)</span><span class="math notranslate nohighlight">\(T(\mathbf{u} + \mathbf{v}) = T(u_1 + v_1, u_2 + v_2) = ((u_1 + v_1) + (u_2 + v_2), (u_1 + v_1))\)</span><span class="math notranslate nohighlight">\(
+  \)</span><span class="math notranslate nohighlight">\(T(\mathbf{u} + \mathbf{v}) = (u_1 + v_1 + u_2 + v_2, u_1 + v_1)\)</span>$</p></li>
+<li><p>Hitung <span class="math notranslate nohighlight">\(T(\mathbf{u}) + T(\mathbf{v})\)</span>:
+$<span class="math notranslate nohighlight">\(T(\mathbf{u}) = (u_1 + u_2, u_1)\)</span><span class="math notranslate nohighlight">\(
+  \)</span><span class="math notranslate nohighlight">\(T(\mathbf{v}) = (v_1 + v_2, v_1)\)</span><span class="math notranslate nohighlight">\(
+  \)</span><span class="math notranslate nohighlight">\(T(\mathbf{u}) + T(\mathbf{v}) = (u_1 + u_2, u_1) + (v_1 + v_2, v_1) = (u_1 + u_2 + v_1 + v_2, u_1 + v_1)\)</span>$</p></li>
+</ul>
+<p>Karena <span class="math notranslate nohighlight">\(T(\mathbf{u} + \mathbf{v}) = (u_1 + v_1 + u_2 + v_2, u_1 + v_1)\)</span> dan <span class="math notranslate nohighlight">\(T(\mathbf{u}) + T(\mathbf{v}) = (u_1 + v_1 + u_2 + v_2, u_1 + v_1)\)</span>,
+maka sifat aditivitas terpenuhi.</p>
 <p><strong>Syarat Aditif terpenuhi</strong></p>
 </section>
-<section id="homogenitas">
-<h2>2. Homogenitas<a class="headerlink" href="#homogenitas" title="Link to this heading">#</a></h2>
-<p>Misal <strong>R</strong>, maka:
-$<span class="math notranslate nohighlight">\(
-T(c \cdot \mathbf{a}) = T(ca_1, ca_2) = (ca_1 + ca_2, ca_1) = c(a_1 + a_2, a_1) = c \cdot T(\mathbf{a})
-\)</span>$</p>
+<section id="langkah-2-verifikasi-homogenitas">
+<h2>Langkah 2: Verifikasi Homogenitas<a class="headerlink" href="#langkah-2-verifikasi-homogenitas" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Hitung <span class="math notranslate nohighlight">\(T(c\mathbf{u})\)</span>:
+$<span class="math notranslate nohighlight">\(c\mathbf{u} = (cu_1, cu_2)\)</span><span class="math notranslate nohighlight">\(
+  \)</span><span class="math notranslate nohighlight">\(T(c\mathbf{u}) = T(cu_1, cu_2) = (cu_1 + cu_2, cu_1)\)</span><span class="math notranslate nohighlight">\(
+  \)</span><span class="math notranslate nohighlight">\(T(c\mathbf{u}) = (c(u_1 + u_2), cu_1)\)</span>$</p></li>
+<li><p>Hitung <span class="math notranslate nohighlight">\(cT(\mathbf{u})\)</span>:
+$<span class="math notranslate nohighlight">\(T(\mathbf{u}) = (u_1 + u_2, u_1)\)</span><span class="math notranslate nohighlight">\(
+  \)</span><span class="math notranslate nohighlight">\(cT(\mathbf{u}) = c(u_1 + u_2, u_1) = (c(u_1 + u_2), c(u_1))\)</span><span class="math notranslate nohighlight">\(
+  \)</span><span class="math notranslate nohighlight">\(cT(\mathbf{u}) = (cu_1 + cu_2, cu_1)\)</span>$</p></li>
+</ul>
+<p>Karena <span class="math notranslate nohighlight">\(T(c\mathbf{u}) = (cu_1 + cu_2, cu_1)\)</span> dan <span class="math notranslate nohighlight">\(cT(\mathbf{u}) = (cu_1 + cu_2, cu_1)\)</span>, maka sifat homogenitas terpenuhi.</p>
 <p><strong>Syarat Homogen Terpenuhi</strong></p>
 </section>
 <section id="kesimpulan">
 <h2>Kesimpulan:<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
-<p>Karena transformasi $<span class="math notranslate nohighlight">\(T(v_1, v_2) = (v_1 + v_2, v_1)\)</span>$ memenuhi sifat aditif dan homogen, maka:</p>
+<p>Karena transformasi <span class="math notranslate nohighlight">\(T(v_1, v_2) = (v_1 + v_2, v_1)\)</span> memenuhi kedua sifat aditivitas dan homogenitas, maka dapat disimpulkan bahwa <span class="math notranslate nohighlight">\(T\)</span> adalah transformasi linear.</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{T \text{ adalah transformasi linier.}}
@@ -534,8 +532,8 @@ T(c \cdot \mathbf{a}) = T(ca_1, ca_2) = (ca_1 + ca_2, ca_1) = c(a_1 + a_2, a_1) 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aditivitas-penjumlahan">1. Aditivitas (Penjumlahan)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homogenitas-perkalian-skalar">2. Homogenitas (Perkalian Skalar)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pembuktian">Pembuktian</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aditivitas">1. Aditivitas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homogenitas">2. Homogenitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-verifikasi-aditivitas">Langkah 1: Verifikasi Aditivitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-verifikasi-homogenitas">Langkah 2: Verifikasi Homogenitas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan:</a></li>
 </ul>
   </nav></div>
