@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome My Komputasi aljabar linier Book &#8212; My kal book</title>
+    <title>Perkalian Titik (Dot Product) &#8212; My kal book</title>
   
   
   
@@ -59,10 +59,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'perkaliantitik(dotproduct)';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SISTEM PERSAMAAN LINIER" href="notebooks.html" />
+    <link rel="prev" title="Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)" href="eigendanorto.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -145,7 +143,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -176,13 +174,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Welcome My Komputasi aljabar linier Book
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">SISTEM PERSAMAAN LINIER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metodeeliminasigaus.html">METODE ELIMINASI GAUS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="persamaanvariabel.html">PERSAMAAN 3 VARIABEL</a></li>
@@ -191,7 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="matrikreflection.html">MATRIK REFLECTION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eigendanorto.html">Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="perkaliantitik%28dotproduct%29.html">Perkalian Titik (Dot Product)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Perkalian Titik (Dot Product)</a></li>
 
 </ul>
 
@@ -264,7 +262,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fperkaliantitik(dotproduct).html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -294,7 +292,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/perkaliantitik(dotproduct).ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +302,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -378,7 +376,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome My Komputasi aljabar linier Book</h1>
+    <h1>Perkalian Titik (Dot Product)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,8 +386,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitas">IDENTITAS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Perkalian Titik (Dot Product)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi">Definisi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-basis-2d-dan-3d">Dot Product Basis 2D dan 3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-2d">Basis 2D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-3d">Basis 3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-semua-pasangan-dot-product">Hitung semua pasangan dot product:</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor-satuan-di-mathbb-r-n">Vektor Satuan di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -400,28 +414,103 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-my-komputasi-aljabar-linier-book">
-<h1>Welcome My Komputasi aljabar linier Book<a class="headerlink" href="#welcome-my-komputasi-aljabar-linier-book" title="Link to this heading">#</a></h1>
-<p>Repository ini menampung tugas dan materi dari komputasi aljabar linier</p>
-<section id="identitas">
-<h2>IDENTITAS<a class="headerlink" href="#identitas" title="Link to this heading">#</a></h2>
-<p>NAMA: SABRINANURHALIZA</p>
-<p>NIM:240411100204</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">SISTEM PERSAMAAN LINIER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metodeeliminasigaus.html">METODE ELIMINASI GAUS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="persamaanvariabel.html">PERSAMAAN 3 VARIABEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="transformasimatriks.html">MATRIKS TRANSFORMATION</a></li>
-<li class="toctree-l1"><a class="reference internal" href="transformasilinier.html">TRANSFORMASI LINIER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrikreflection.html">MATRIK REFLECTION</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eigendanorto.html">Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eigendanorto.html#mencari-ortonormal-ortogonal">Mencari Ortonormal &amp; Ortogonal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="perkaliantitik%28dotproduct%29.html">Perkalian Titik (Dot Product)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="perkaliantitik%28dotproduct%29.html#vektor-satuan-di-mathbb-r-n">Vektor Satuan di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="perkalian-titik-dot-product">
+<h1>Perkalian Titik (Dot Product)<a class="headerlink" href="#perkalian-titik-dot-product" title="Link to this heading">#</a></h1>
+<section id="definisi">
+<h2>Definisi<a class="headerlink" href="#definisi" title="Link to this heading">#</a></h2>
+<p>Perkalian titik adalah operasi aljabar sederhana yang membantu kita mengukur panjang vektor dan sudut yang dibentuk oleh sepasang vektor.</p>
 </section>
+<section id="dot-product-basis-2d-dan-3d">
+<h2>Dot Product Basis 2D dan 3D<a class="headerlink" href="#dot-product-basis-2d-dan-3d" title="Link to this heading">#</a></h2>
+<section id="basis-2d">
+<h3>Basis 2D<a class="headerlink" href="#basis-2d" title="Link to this heading">#</a></h3>
+<p>Terdapat dua vektor basis di ℝ²:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{b}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \quad 
+\mathbf{b}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+\end{split}\]</div>
+<p>Hitung dot product-nya:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{b}_1 \cdot \mathbf{b}_2 = (1 \cdot 0) + (0 \cdot 1) = 0
+\]</div>
+<p>Karena hasilnya 0, maka <span class="math notranslate nohighlight">\(\mathbf{b}_1\)</span> dan <span class="math notranslate nohighlight">\(\mathbf{b}_2\)</span> <strong>ortogonal</strong>.</p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+</section>
+<section id="basis-3d">
+<h3>Basis 3D<a class="headerlink" href="#basis-3d" title="Link to this heading">#</a></h3>
+<p>Terdapat tiga vektor basis di ℝ³:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{b}_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \quad
+\mathbf{b}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \quad
+\mathbf{b}_3 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+\end{split}\]</div>
+<section id="hitung-semua-pasangan-dot-product">
+<h4>Hitung semua pasangan dot product:<a class="headerlink" href="#hitung-semua-pasangan-dot-product" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{b}_1 \cdot \mathbf{b}_2\)</span>
+$<span class="math notranslate nohighlight">\(
+= (1 \cdot 0) + (0 \cdot 1) + (0 \cdot 0) = 0
+\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{b}_1 \cdot \mathbf{b}_3\)</span>
+$<span class="math notranslate nohighlight">\(
+= (1 \cdot 0) + (0 \cdot 0) + (0 \cdot 1) = 0
+\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{b}_2 \cdot \mathbf{b}_3\)</span>
+$<span class="math notranslate nohighlight">\(
+= (0 \cdot 0) + (1 \cdot 0) + (0 \cdot 1) = 0
+\)</span>$</p></li>
+</ol>
+<p>Semua pasangan dot product hasilnya 0, sehingga ketiga vektor <strong>saling ortogonal</strong>.</p>
+<p><img alt="image-2.png" src="attachment:image-2.png" /></p>
+<section id="kesimpulan">
+<h5>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Vektor basis standar di 2D dan 3D adalah <strong>saling ortogonal</strong>.</p></li>
+<li><p>Dot product dua vektor ortogonal selalu bernilai <strong>nol (0)</strong>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="vektor-satuan-di-mathbb-r-n">
+<h1>Vektor Satuan di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span><a class="headerlink" href="#vektor-satuan-di-mathbb-r-n" title="Link to this heading">#</a></h1>
+<p><strong>Definisi</strong></p>
+<p>Sebuah vektor <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> disebut sebagai <strong>vektor satuan</strong> jika norm (atau panjang) dari vektor tersebut adalah 1. Secara matematis:</p>
+<div class="math notranslate nohighlight">
+\[\| \mathbf{u} \| = 1\]</div>
+<p>Di ruang <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>, untuk vektor <span class="math notranslate nohighlight">\(\mathbf{v} = \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix}\)</span>, normnya adalah:</p>
+<div class="math notranslate nohighlight">
+\[\| \mathbf{v} \| = \sqrt{v_1^2 + v_2^2 + \dots + v_n^2}\]</div>
+<p>Untuk mendapatkan vektor satuan <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> yang searah dengan vektor tak-nol <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, kita normalisasi <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{u} = \frac{\mathbf{v}}{\| \mathbf{v} \|}\]</div>
+<p><strong>Contoh di <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span></strong></p>
+<p>Diberikan vektor <span class="math notranslate nohighlight">\(\mathbf{v} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Hitung norm dari <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>:
+$<span class="math notranslate nohighlight">\(\| \mathbf{v} \| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\)</span>$</p></li>
+<li><p>Vektor satuan <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> searah dengan <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> adalah:
+$<span class="math notranslate nohighlight">\(\mathbf{u} = \frac{1}{5} \begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} 3/5 \\ 4/5 \end{bmatrix}\)</span>$</p></li>
+<li><p>Verifikasi bahwa <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> adalah vektor satuan:
+$<span class="math notranslate nohighlight">\(\| \mathbf{u} \| = \sqrt{\left(\frac{3}{5}\right)^2 + \left(\frac{4}{5}\right)^2} = \sqrt{\frac{9}{25} + \frac{16}{25}} = \sqrt{\frac{25}{25}} = 1\)</span>$</p></li>
+</ol>
+<p><strong>Vektor Basis Standar di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></strong></p>
+<p>Vektor-vektor basis standar di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> merupakan contoh vektor satuan yang saling ortogonal:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}, \quad
+\mathbf{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}, \quad
+\dots, \quad
+\mathbf{e}_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}
+\end{split}\]</div>
+<p>Setiap vektor basis standar <span class="math notranslate nohighlight">\(\mathbf{e}_i\)</span> memiliki norm 1:</p>
+<div class="math notranslate nohighlight">
+\[\| \mathbf{e}_i \| = 1\]</div>
+<p><img alt="image-3.png" src="attachment:image-3.png" /></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -454,14 +543,14 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="notebooks.html"
-       title="next page">
+    <a class="left-prev"
+       href="eigendanorto.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SISTEM PERSAMAAN LINIER</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -479,8 +568,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitas">IDENTITAS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Perkalian Titik (Dot Product)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi">Definisi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-basis-2d-dan-3d">Dot Product Basis 2D dan 3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-2d">Basis 2D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-3d">Basis 3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-semua-pasangan-dot-product">Hitung semua pasangan dot product:</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor-satuan-di-mathbb-r-n">Vektor Satuan di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
+</ul>
+
   </nav></div>
 
 </div></div>

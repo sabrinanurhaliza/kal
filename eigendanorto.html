@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Eigen (value &amp; vektor) dan Orto (normal &amp; gonal) &#8212; My kal book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'eigendanorto';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Perkalian Titik (Dot Product)" href="perkaliantitik%28dotproduct%29.html" />
+    <link rel="prev" title="MATRIK REFLECTION" href="matrikreflection.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/sabrina.jpg" class="logo__image only-light" alt="My kal book - Home"/>
+    <script>document.write(`<img src="_static/sabrina.jpg" class="logo__image only-dark" alt="My kal book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome My Komputasi aljabar linier Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">SISTEM PERSAMAAN LINIER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodeeliminasigaus.html">METODE ELIMINASI GAUS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="persamaanvariabel.html">PERSAMAAN 3 VARIABEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformasimatriks.html">MATRIKS TRANSFORMATION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformasilinier.html">TRANSFORMASI LINIER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrikreflection.html">MATRIK REFLECTION</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="perkaliantitik%28dotproduct%29.html">Perkalian Titik (Dot Product)</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Feigendanorto.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/eigendanorto.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Eigen (value & vektor) dan Orto (normal & gonal)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi">Definisi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue">Eigenvalue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvektor">Eigenvektor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-eigenvalue-dan-eigenvector-untuk-matriks-a">Contoh: Eigenvalue dan Eigenvector untuk Matriks A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-eigenvalue">Mencari Eigenvalue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-eigenvector">Mencari Eigenvector</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-ortonormal-ortogonal">Mencari Ortonormal &amp; Ortogonal</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-ortogonal">Definisi Ortogonal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-ortonormal">Definisi Ortonormal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apakah-eigenvector-ini-ortonormal">Apakah Eigenvector Ini Ortonormal?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ortonormal">Ortonormal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-tentukan-vektor-ortonormal-pertama">Langkah 1: Tentukan Vektor Ortonormal Pertama</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-hitung-proyeksi">Langkah 2: Hitung Proyeksi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-vektor-ortogonal-kedua">Langkah 3: Vektor Ortogonal Kedua</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-normalisasi-membuat-ortonormal">Langkah 4: Normalisasi (Membuat Ortonormal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="eigen-value-vektor-dan-orto-normal-gonal">
+<h1>Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)<a class="headerlink" href="#eigen-value-vektor-dan-orto-normal-gonal" title="Link to this heading">#</a></h1>
+<section id="definisi">
+<h2>Definisi<a class="headerlink" href="#definisi" title="Link to this heading">#</a></h2>
+</section>
+<section id="eigenvalue">
+<h2>Eigenvalue<a class="headerlink" href="#eigenvalue" title="Link to this heading">#</a></h2>
+<p>Misalkan A adalah sebuah matriks persegi berukuran n×n. Sebuah skalar λ disebut sebagai nilai eigen (eigenvalue) dari A jika terdapat vektor tak-nol v sedemikian sehingga:</p>
+<p>Av=λv</p>
+<p>Di sini, v adalah vektor kolom berukuran n×1.</p>
+</section>
+<section id="eigenvektor">
+<h2>Eigenvektor<a class="headerlink" href="#eigenvektor" title="Link to this heading">#</a></h2>
+<p>Vektor tak-nol v yang memenuhi persamaan di atas (Av=λv) untuk suatu nilai eigen λ disebut sebagai vektor eigen (eigenvector) dari A yang berkorespondensi dengan nilai eigen λ.</p>
+</section>
+<section id="contoh-eigenvalue-dan-eigenvector-untuk-matriks-a">
+<h2>Contoh: Eigenvalue dan Eigenvector untuk Matriks A<a class="headerlink" href="#contoh-eigenvalue-dan-eigenvector-untuk-matriks-a" title="Link to this heading">#</a></h2>
+<p>Diberikan matriks:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix}
+2 &amp; 1 \\
+3 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="mencari-eigenvalue">
+<h2>Mencari Eigenvalue<a class="headerlink" href="#mencari-eigenvalue" title="Link to this heading">#</a></h2>
+<p>Hitung determinan dari <span class="math notranslate nohighlight">\(\lambda I\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\det(A - \lambda I) =
+\begin{vmatrix}
+2 - \lambda &amp; 1 \\
+3 &amp; 2 - \lambda
+\end{vmatrix}
+= (2 - \lambda)^2 - 3 = \lambda^2 - 4\lambda + 1
+\end{split}\]</div>
+<p>Selesaikan:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda^2 - 4\lambda + 1 = 0
+\]</div>
+<p>Gunakan rumus kuadrat:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = \frac{4 \pm \sqrt{(-4)^2 - 4(1)(1)}}{2(1)} = \frac{4 \pm \sqrt{16 - 4}}{2} = \frac{4 \pm \sqrt{12}}{2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+= \frac{4 \pm 2\sqrt{3}}{2} = 2 \pm \sqrt{3}
+\]</div>
+<p>Jadi eigenvalue-nya adalah:</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_1 = 2 + \sqrt{3}, \quad \lambda_2 = 2 - \sqrt{3}
+\]</div>
+</section>
+<section id="mencari-eigenvector">
+<h2>Mencari Eigenvector<a class="headerlink" href="#mencari-eigenvector" title="Link to this heading">#</a></h2>
+<p>Untuk masing-masing eigenvalue, kita cari eigenvector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> yang memenuhi:</p>
+<div class="math notranslate nohighlight">
+\[
+(A - \lambda I)\mathbf{v} = 0
+\]</div>
+<p>Misal dengan bantuan Python (NumPy), hasil eigenvector ternormalisasi:</p>
+<p>Untuk <span class="math notranslate nohighlight">\(\lambda_1 = 2 + \sqrt{3}\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_1 \approx \begin{bmatrix}
+0.4597 \\
+0.8881
+\end{bmatrix}
+\end{split}\]</div>
+<p>Untuk <span class="math notranslate nohighlight">\(\lambda_2 = 2 - \sqrt{3}\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_2 \approx \begin{bmatrix}
+0.8881 \\
+-0.4597
+\end{bmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;eigenvalues:&quot;</span><span class="p">,</span> <span class="n">eigenvalues</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;eigenvecrors:&quot;</span><span class="p">,</span> <span class="n">eigenvectors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eigenvalues: [3.73205081 0.26794919]
+eigenvecrors: [[ 0.5       -0.5      ]
+ [ 0.8660254  0.8660254]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mencari-ortonormal-ortogonal">
+<h1>Mencari Ortonormal &amp; Ortogonal<a class="headerlink" href="#mencari-ortonormal-ortogonal" title="Link to this heading">#</a></h1>
+<section id="definisi-ortogonal">
+<h2>Definisi Ortogonal<a class="headerlink" href="#definisi-ortogonal" title="Link to this heading">#</a></h2>
+<p>Dua vektor <span class="math notranslate nohighlight">\(\vec{u}\)</span> dan <span class="math notranslate nohighlight">\(\vec{v}\)</span> dikatakan <strong>ortogonal</strong> jika sudut antara mereka adalah 90°, atau jika <strong>hasil dot product-nya nol</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u} \cdot \vec{v} = 0
+\]</div>
+</section>
+<section id="definisi-ortonormal">
+<h2>Definisi Ortonormal<a class="headerlink" href="#definisi-ortonormal" title="Link to this heading">#</a></h2>
+<p>Himpunan vektor dikatakan <strong>ortonormal</strong> jika:</p>
+<ol class="arabic simple">
+<li><p>Semua vektor <strong>saling ortogonal</strong></p></li>
+<li><p><strong>Setiap vektor memiliki panjang (norma) = 1</strong></p></li>
+</ol>
+<p>ortonormal menjadikan eigen vektor menjadi panjang satuan</p>
+<p>contoh
+<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+2 &amp; 1 \\
+3 &amp; 2
+\end{bmatrix}
+\)</span></p>
+</section>
+<section id="apakah-eigenvector-ini-ortonormal">
+<h2>Apakah Eigenvector Ini Ortonormal?<a class="headerlink" href="#apakah-eigenvector-ini-ortonormal" title="Link to this heading">#</a></h2>
+<p>Cek norma dan dot product:</p>
+</section>
+<section id="ortonormal">
+<h2>Ortonormal<a class="headerlink" href="#ortonormal" title="Link to this heading">#</a></h2>
+<p>Diberikan dua vektor di <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_1 = \begin{bmatrix} 2 \\ 1 \end{bmatrix}, \quad 
+\mathbf{v}_2 = \begin{bmatrix} 3 \\ 2 \end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="langkah-1-tentukan-vektor-ortonormal-pertama">
+<h2>Langkah 1: Tentukan Vektor Ortonormal Pertama<a class="headerlink" href="#langkah-1-tentukan-vektor-ortonormal-pertama" title="Link to this heading">#</a></h2>
+<p>Ambil langsung vektor pertama:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{u}_1 = \mathbf{v}_1 = \begin{bmatrix} 2 \\ 1 \end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="langkah-2-hitung-proyeksi">
+<h2>Langkah 2: Hitung Proyeksi<a class="headerlink" href="#langkah-2-hitung-proyeksi" title="Link to this heading">#</a></h2>
+<p>Dot product antara <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span> dan <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}_2 \cdot \mathbf{u}_1 = 3 \cdot 2 + 2 \cdot 1 = 6 + 2 = 8
+\]</div>
+<p>Dot product antara <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span> dan dirinya sendiri:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{u}_1 \cdot \mathbf{u}_1 = 2^2 + 1^2 = 4 + 1 = 5
+\]</div>
+<p>Proyeksi <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span> ke arah <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{proj}_{\mathbf{u}_1}(\mathbf{v}_2) = \frac{\mathbf{v}_2 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \cdot \mathbf{u}_1 = \frac{8}{5} \cdot \begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} \frac{16}{5} \\ \frac{8}{5} \end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="langkah-3-vektor-ortogonal-kedua">
+<h2>Langkah 3: Vektor Ortogonal Kedua<a class="headerlink" href="#langkah-3-vektor-ortogonal-kedua" title="Link to this heading">#</a></h2>
+<p>Kurangi proyeksi dari <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span> untuk mendapatkan vektor ortogonal:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{u}_2 = \mathbf{v}_2 - \text{proj}_{\mathbf{u}_1}(\mathbf{v}_2) = \begin{bmatrix} 3 \\ 2 \end{bmatrix} - \begin{bmatrix} \frac{16}{5} \\ \frac{8}{5} \end{bmatrix} = \begin{bmatrix} -\frac{1}{5} \\ \frac{2}{5} \end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="langkah-4-normalisasi-membuat-ortonormal">
+<h2>Langkah 4: Normalisasi (Membuat Ortonormal)<a class="headerlink" href="#langkah-4-normalisasi-membuat-ortonormal" title="Link to this heading">#</a></h2>
+<p>Norma dari <span class="math notranslate nohighlight">\(\mathbf{u}_1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\| \mathbf{u}_1 \| = \sqrt{2^2 + 1^2} = \sqrt{5}, \quad \Rightarrow \mathbf{e}_1 = \frac{1}{\sqrt{5}} \begin{bmatrix} 2 \\ 1 \end{bmatrix}
+\end{split}\]</div>
+<p>Norma dari <span class="math notranslate nohighlight">\(\mathbf{u}_2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\| \mathbf{u}_2 \| = \sqrt{\left(-\frac{1}{5}\right)^2 + \left(\frac{2}{5}\right)^2} = \sqrt{\frac{1}{25} + \frac{4}{25}} = \sqrt{\frac{5}{25}} = \frac{1}{\sqrt{5}}
+\]</div>
+<p>Sehingga vektor ortonormal kedua adalah:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{e}_2 = \frac{1}{(1/\sqrt{5})} \cdot \begin{bmatrix} -\frac{1}{5} \\ \frac{2}{5} \end{bmatrix} = \begin{bmatrix} -\frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}} \end{bmatrix}
+\end{split}\]</div>
+</section>
+<section id="hasil-akhir">
+<h2>Hasil Akhir<a class="headerlink" href="#hasil-akhir" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Vektor Ortogonal:</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{u}_1 = \begin{bmatrix} 2 \\ 1 \end{bmatrix}, \quad 
+\mathbf{u}_2 = \begin{bmatrix} -\frac{1}{5} \\ \frac{2}{5} \end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Vektor Ortonormal:</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{e}_1 = \begin{bmatrix} \frac{2}{\sqrt{5}} \\ \frac{1}{\sqrt{5}} \end{bmatrix}, \quad 
+\mathbf{e}_2 = \begin{bmatrix} -\frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}} \end{bmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Input vectors</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Step 1: Gram-Schmidt process</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="n">v1</span>
+
+<span class="c1"># Compute projection of v2 onto u1</span>
+<span class="n">dot_v2_u1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">u1</span><span class="p">)</span>
+<span class="n">dot_u1_u1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u1</span><span class="p">)</span>
+<span class="n">proj_v2_u1</span> <span class="o">=</span> <span class="p">(</span><span class="n">dot_v2_u1</span> <span class="o">/</span> <span class="n">dot_u1_u1</span><span class="p">)</span> <span class="o">*</span> <span class="n">u1</span>
+
+<span class="c1"># Orthogonal vector u2</span>
+<span class="n">u2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">-</span> <span class="n">proj_v2_u1</span>
+
+<span class="c1"># Step 2: Normalize vectors (make them orthonormal)</span>
+<span class="n">e1</span> <span class="o">=</span> <span class="n">u1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">u1</span><span class="p">)</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">u2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">u2</span><span class="p">)</span>
+
+<span class="c1"># Output</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Orthonormalization Using Gram-Schmidt ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original vectors:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;v1 = </span><span class="si">{</span><span class="n">v1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;v2 = </span><span class="si">{</span><span class="n">v2</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orthogonal vectors:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;u1 = </span><span class="si">{</span><span class="n">u1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;u2 = </span><span class="si">{</span><span class="n">u2</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orthonormal vectors:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;e1 = </span><span class="si">{</span><span class="n">e1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;e2 = </span><span class="si">{</span><span class="n">e2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Orthonormalization Using Gram-Schmidt ===
+
+Original vectors:
+v1 = [2 1]
+v2 = [3 2]
+
+Orthogonal vectors:
+u1 = [2 1]
+u2 = [-0.2  0.4]
+
+Orthonormal vectors:
+e1 = [0.89442719 0.4472136 ]
+e2 = [-0.4472136   0.89442719]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="matrikreflection.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MATRIK REFLECTION</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="perkaliantitik%28dotproduct%29.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Perkalian Titik (Dot Product)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi">Definisi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue">Eigenvalue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvektor">Eigenvektor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-eigenvalue-dan-eigenvector-untuk-matriks-a">Contoh: Eigenvalue dan Eigenvector untuk Matriks A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-eigenvalue">Mencari Eigenvalue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-eigenvector">Mencari Eigenvector</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-ortonormal-ortogonal">Mencari Ortonormal &amp; Ortogonal</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-ortogonal">Definisi Ortogonal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-ortonormal">Definisi Ortonormal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apakah-eigenvector-ini-ortonormal">Apakah Eigenvector Ini Ortonormal?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ortonormal">Ortonormal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-tentukan-vektor-ortonormal-pertama">Langkah 1: Tentukan Vektor Ortonormal Pertama</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-hitung-proyeksi">Langkah 2: Hitung Proyeksi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-vektor-ortogonal-kedua">Langkah 3: Vektor Ortogonal Kedua</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-normalisasi-membuat-ortonormal">Langkah 4: Normalisasi (Membuat Ortonormal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By sabrinanurhaliza 240411100204
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
