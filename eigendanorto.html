@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Eigen (value &amp; vektor) dan Orto (normal &amp; gonal) &#8212; My kal book</title>
+    <title>EIGEN (value &amp; vektor) dan ORTO (normal &amp; gonal) &#8212; My kal book</title>
   
   
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'eigendanorto';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Perkalian Titik (Dot Product)" href="perkaliantitik%28dotproduct%29.html" />
+    <link rel="next" title="PERKALIAN TITIK (Dot Product)" href="perkaliantitik%28dotproduct%29.html" />
     <link rel="prev" title="MATRIK REFLECTION" href="matrikreflection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,9 +188,12 @@
 <li class="toctree-l1"><a class="reference internal" href="transformasimatriks.html">MATRIKS TRANSFORMATION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transformasilinier.html">TRANSFORMASI LINIER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrikreflection.html">MATRIK REFLECTION</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">EIGEN (value &amp; vektor) dan ORTO (normal &amp; gonal)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perkaliantitik%28dotproduct%29.html">PERKALIAN TITIK (Dot Product)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="perkaliantitik%28dotproduct%29.html">Perkalian Titik (Dot Product)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crossproduct.html">PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT)</a></li>
+
+
 
 </ul>
 
@@ -377,7 +380,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Eigen (value & vektor) dan Orto (normal & gonal)</h1>
+    <h1>EIGEN (value & vektor) dan ORTO (normal & gonal)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,16 +390,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi">Definisi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue">Eigenvalue</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvektor">Eigenvektor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-eigenvalue-dan-eigenvector-untuk-matriks-a">Contoh: Eigenvalue dan Eigenvector untuk Matriks A</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-eigenvalue">Mencari Eigenvalue</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-eigenvector">Mencari Eigenvector</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-ortonormal-ortogonal">Mencari Ortonormal &amp; Ortogonal</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-ortonormal-ortogonal">Mencari Ortonormal &amp; Ortogonal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-ortogonal">Definisi Ortogonal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-ortonormal">Definisi Ortonormal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apakah-eigenvector-ini-ortonormal">Apakah Eigenvector Ini Ortonormal?</a></li>
@@ -407,9 +407,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-normalisasi-membuat-ortonormal">Langkah 4: Normalisasi (Membuat Ortonormal)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -421,7 +418,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="eigen-value-vektor-dan-orto-normal-gonal">
-<h1>Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)<a class="headerlink" href="#eigen-value-vektor-dan-orto-normal-gonal" title="Link to this heading">#</a></h1>
+<h1>EIGEN (value &amp; vektor) dan ORTO (normal &amp; gonal)<a class="headerlink" href="#eigen-value-vektor-dan-orto-normal-gonal" title="Link to this heading">#</a></h1>
 <section id="definisi">
 <h2>Definisi<a class="headerlink" href="#definisi" title="Link to this heading">#</a></h2>
 </section>
@@ -521,9 +518,9 @@ eigenvecrors: [[ 0.5       -0.5      ]
 </div>
 </div>
 </section>
+<section id="mencari-ortonormal-ortogonal">
+<h2>Mencari Ortonormal &amp; Ortogonal<a class="headerlink" href="#mencari-ortonormal-ortogonal" title="Link to this heading">#</a></h2>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="mencari-ortonormal-ortogonal">
-<h1>Mencari Ortonormal &amp; Ortogonal<a class="headerlink" href="#mencari-ortonormal-ortogonal" title="Link to this heading">#</a></h1>
 <section id="definisi-ortogonal">
 <h2>Definisi Ortogonal<a class="headerlink" href="#definisi-ortogonal" title="Link to this heading">#</a></h2>
 <p>Dua vektor <span class="math notranslate nohighlight">\(\vec{u}\)</span> dan <span class="math notranslate nohighlight">\(\vec{v}\)</span> dikatakan <strong>ortogonal</strong> jika sudut antara mereka adalah 90°, atau jika <strong>hasil dot product-nya nol</strong>:</p>
@@ -736,7 +733,7 @@ e2 = [-0.4472136   0.89442719]
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Perkalian Titik (Dot Product)</p>
+        <p class="prev-next-title">PERKALIAN TITIK (Dot Product)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -756,16 +753,13 @@ e2 = [-0.4472136   0.89442719]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Eigen (value &amp; vektor) dan Orto (normal &amp; gonal)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi">Definisi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue">Eigenvalue</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvektor">Eigenvektor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-eigenvalue-dan-eigenvector-untuk-matriks-a">Contoh: Eigenvalue dan Eigenvector untuk Matriks A</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-eigenvalue">Mencari Eigenvalue</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-eigenvector">Mencari Eigenvector</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-ortonormal-ortogonal">Mencari Ortonormal &amp; Ortogonal</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-ortonormal-ortogonal">Mencari Ortonormal &amp; Ortogonal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-ortogonal">Definisi Ortogonal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-ortonormal">Definisi Ortonormal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apakah-eigenvector-ini-ortonormal">Apakah Eigenvector Ini Ortonormal?</a></li>
@@ -776,9 +770,6 @@ e2 = [-0.4472136   0.89442719]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-normalisasi-membuat-ortonormal">Langkah 4: Normalisasi (Membuat Ortonormal)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

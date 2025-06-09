@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PERKALIAN TITIK (Dot Product) &#8212; My kal book</title>
+    <title>PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT) &#8212; My kal book</title>
   
   
   
@@ -59,11 +59,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'perkaliantitik(dotproduct)';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'crossproduct';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT)" href="crossproduct.html" />
-    <link rel="prev" title="EIGEN (value &amp; vektor) dan ORTO (normal &amp; gonal)" href="eigendanorto.html" />
+    <link rel="prev" title="PERKALIAN TITIK (Dot Product)" href="perkaliantitik%28dotproduct%29.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,9 +188,9 @@
 <li class="toctree-l1"><a class="reference internal" href="transformasilinier.html">TRANSFORMASI LINIER</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrikreflection.html">MATRIK REFLECTION</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eigendanorto.html">EIGEN (value &amp; vektor) dan ORTO (normal &amp; gonal)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">PERKALIAN TITIK (Dot Product)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perkaliantitik%28dotproduct%29.html">PERKALIAN TITIK (Dot Product)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="crossproduct.html">PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT)</a></li>
 
 
 
@@ -266,7 +265,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fperkaliantitik(dotproduct).html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcrossproduct.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -296,7 +295,7 @@
       
       
       
-      <li><a href="_sources/perkaliantitik(dotproduct).ipynb" target="_blank"
+      <li><a href="_sources/crossproduct.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -380,7 +379,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>PERKALIAN TITIK (Dot Product)</h1>
+    <h1>PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -390,22 +389,46 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PERKALIAN TITIK (Dot Product)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi">Definisi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-basis-2d-dan-3d">Dot Product Basis 2D dan 3D</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-2d">Basis 2D</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-3d">Basis 3D</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-semua-pasangan-dot-product">Hitung semua pasangan dot product:</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maka-vec-v-times-vec-u-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-v-1-v-2-v-3-u-1-u-2-u-3-end-vmatrix">Maka:
+$$
+\vec{v} \times \vec{u} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \
+v_1 &amp; v_2 &amp; v_3 \
+u_1 &amp; u_2 &amp; u_3
+\end{vmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh:</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maka-vec-v-times-vec-u-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-1-0-0-0-1-0-end-vmatrix">Maka:
+$$
+\vec{v} \times \vec{u} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \
+1 &amp; 0 &amp; 0 \
+0 &amp; 1 &amp; 0
+\end{vmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitas-cross-product">Identitas Cross Product:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perkalian-titik-dot-product">Perkalian Titik (Dot Product):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-cross-product-lanjutan">Contoh Cross Product Lanjutan</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maka-vec-u-times-vec-v-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-1-1-1-2-1-1-end-vmatrix">Maka:
+$$
+\vec{u} \times \vec{v} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \
+1 &amp; 1 &amp; 1 \
+2 &amp; 1 &amp; 1
+\end{vmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-1">SOAL 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luas-dari-jajaran-genjang-yang-ditentukan-oleh-vektor-u-1-2-dan-v-2-1-adalah">1. Luas dari jajaran genjang yang ditentukan oleh vektor <strong>u = [1, 2]</strong> dan <strong>v = [2, 1]</strong> adalah …</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luas-dari-jajaran-genjang-yang-ditentukan-oleh-vektor-u-2-0-0-dan-v-0-0-3-adalah">2. Luas dari jajaran genjang yang ditentukan oleh vektor <strong>u = [2, 0, 0]</strong> dan <strong>v = [0, 0, 3]</strong> adalah …</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luas-segitiga-dengan-titik-sudut-a-0-0-0-b-1-3-1-dan-c-2-1-1-adalah">3. Luas segitiga dengan titik sudut <strong>A(0,0,0)</strong>, <strong>B(1,3,-1)</strong>, dan <strong>C(2,1,1)</strong> adalah …</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luas-segitiga-dengan-titik-sudut-a-5-2-1-b-3-6-2-dan-c-1-0-4-adalah">4. Luas segitiga dengan titik sudut <strong>A(5,2,-1)</strong>, <strong>B(3,6,2)</strong>, dan <strong>C(1,0,4)</strong> adalah …</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor-satuan-di-mathbb-r-n">Vektor Satuan di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
 </ul>
 
             </nav>
@@ -418,103 +441,215 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="perkalian-titik-dot-product">
-<h1>PERKALIAN TITIK (Dot Product)<a class="headerlink" href="#perkalian-titik-dot-product" title="Link to this heading">#</a></h1>
-<section id="definisi">
-<h2>Definisi<a class="headerlink" href="#definisi" title="Link to this heading">#</a></h2>
-<p>Perkalian titik adalah operasi aljabar sederhana yang membantu kita mengukur panjang vektor dan sudut yang dibentuk oleh sepasang vektor.</p>
+  <section id="perkalian-silang-dua-vektor-cross-prduct">
+<h1>PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT)<a class="headerlink" href="#perkalian-silang-dua-vektor-cross-prduct" title="Link to this heading">#</a></h1>
+<p>Misalkan dua vektor:<br />
+$<span class="math notranslate nohighlight">\(
+\vec{v} = (v_1, v_2, v_3), \quad \vec{u} = (u_1, u_2, u_3)
+\)</span>$</p>
 </section>
-<section id="dot-product-basis-2d-dan-3d">
-<h2>Dot Product Basis 2D dan 3D<a class="headerlink" href="#dot-product-basis-2d-dan-3d" title="Link to this heading">#</a></h2>
-<section id="basis-2d">
-<h3>Basis 2D<a class="headerlink" href="#basis-2d" title="Link to this heading">#</a></h3>
-<p>Terdapat dua vektor basis di ℝ²:</p>
+<section class="tex2jax_ignore mathjax_ignore" id="maka-vec-v-times-vec-u-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-v-1-v-2-v-3-u-1-u-2-u-3-end-vmatrix">
+<h1>Maka:
+$$
+\vec{v} \times \vec{u} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \
+v_1 &amp; v_2 &amp; v_3 \
+u_1 &amp; u_2 &amp; u_3
+\end{vmatrix}<a class="headerlink" href="#maka-vec-v-times-vec-u-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-v-1-v-2-v-3-u-1-u-2-u-3-end-vmatrix" title="Link to this heading">#</a></h1>
+<p>(v_2 u_3 - v_3 u_2)\mathbf{i} - (v_1 u_3 - v_3 u_1)\mathbf{j} + (v_1 u_2 - v_2 u_1)\mathbf{k}
+$$</p>
+<section id="contoh">
+<h2>Contoh:<a class="headerlink" href="#contoh" title="Link to this heading">#</a></h2>
+<p>Jika
+$<span class="math notranslate nohighlight">\(
+\vec{v} = (1, 0, 0), \quad \vec{u} = (0, 1, 0)
+\)</span>$</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="maka-vec-v-times-vec-u-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-1-0-0-0-1-0-end-vmatrix">
+<h1>Maka:
+$$
+\vec{v} \times \vec{u} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \
+1 &amp; 0 &amp; 0 \
+0 &amp; 1 &amp; 0
+\end{vmatrix}<a class="headerlink" href="#maka-vec-v-times-vec-u-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-1-0-0-0-1-0-end-vmatrix" title="Link to this heading">#</a></h1>
+<p>(0\cdot0 - 0\cdot1)\mathbf{i} - (1\cdot0 - 0\cdot0)\mathbf{j} + (1\cdot1 - 0\cdot0)\mathbf{k}
+= \mathbf{k}
+$$</p>
+<section id="identitas-cross-product">
+<h2>Identitas Cross Product:<a class="headerlink" href="#identitas-cross-product" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\mathbf{b}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \quad 
-\mathbf{b}_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+\mathbf{i} \times \mathbf{j} = \mathbf{k} \\
+\mathbf{j} \times \mathbf{k} = \mathbf{i} \\
+\mathbf{k} \times \mathbf{i} = \mathbf{j}
 \end{split}\]</div>
-<p>Hitung dot product-nya:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{j} \times \mathbf{i} = -\mathbf{k} \\
+\mathbf{i} \times \mathbf{k} = -\mathbf{j} \\
+\mathbf{k} \times \mathbf{j} = -\mathbf{i}
+\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{b}_1 \cdot \mathbf{b}_2 = (1 \cdot 0) + (0 \cdot 1) = 0
+\mathbf{i} \times \mathbf{i} = \mathbf{j} \times \mathbf{j} = \mathbf{k} \times \mathbf{k} = \vec{0}
 \]</div>
-<p>Karena hasilnya 0, maka <span class="math notranslate nohighlight">\(\mathbf{b}_1\)</span> dan <span class="math notranslate nohighlight">\(\mathbf{b}_2\)</span> <strong>ortogonal</strong>.</p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
 </section>
-<section id="basis-3d">
-<h3>Basis 3D<a class="headerlink" href="#basis-3d" title="Link to this heading">#</a></h3>
-<p>Terdapat tiga vektor basis di ℝ³:</p>
+<section id="perkalian-titik-dot-product">
+<h2>Perkalian Titik (Dot Product):<a class="headerlink" href="#perkalian-titik-dot-product" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{b}_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \quad
-\mathbf{b}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \quad
-\mathbf{b}_3 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
-\end{split}\]</div>
-<section id="hitung-semua-pasangan-dot-product">
-<h4>Hitung semua pasangan dot product:<a class="headerlink" href="#hitung-semua-pasangan-dot-product" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(\mathbf{b}_1 \cdot \mathbf{b}_2\)</span>
+\[
+\vec{v} \cdot \vec{u} = v_1 u_1 + v_2 u_2 + v_3 u_3
+\]</div>
+<p>Contoh:
 $<span class="math notranslate nohighlight">\(
-= (1 \cdot 0) + (0 \cdot 1) + (0 \cdot 0) = 0
-\)</span>$</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{b}_1 \cdot \mathbf{b}_3\)</span>
+\vec{v} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \quad
+\vec{u} = \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}
+\Rightarrow
+\vec{v} \cdot \vec{u} = 1\cdot1 + 1\cdot2 + 1\cdot1 = 4
+\)</span>$</p>
+</section>
+<section id="contoh-cross-product-lanjutan">
+<h2>Contoh Cross Product Lanjutan<a class="headerlink" href="#contoh-cross-product-lanjutan" title="Link to this heading">#</a></h2>
+<p>Diketahui:
 $<span class="math notranslate nohighlight">\(
-= (1 \cdot 0) + (0 \cdot 0) + (0 \cdot 1) = 0
-\)</span>$</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{b}_2 \cdot \mathbf{b}_3\)</span>
-$<span class="math notranslate nohighlight">\(
-= (0 \cdot 0) + (1 \cdot 0) + (0 \cdot 1) = 0
-\)</span>$</p></li>
-</ol>
-<p>Semua pasangan dot product hasilnya 0, sehingga ketiga vektor <strong>saling ortogonal</strong>.</p>
-<p><img alt="image-2.png" src="attachment:image-2.png" /></p>
-<section id="kesimpulan">
-<h5>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h5>
+\vec{u} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \quad
+\vec{v} = \begin{pmatrix} 2 \\ 1 \\ 1 \end{pmatrix}
+\)</span>$</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="maka-vec-u-times-vec-v-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-1-1-1-2-1-1-end-vmatrix">
+<h1>Maka:
+$$
+\vec{u} \times \vec{v} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \
+1 &amp; 1 &amp; 1 \
+2 &amp; 1 &amp; 1
+\end{vmatrix}<a class="headerlink" href="#maka-vec-u-times-vec-v-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-1-1-1-2-1-1-end-vmatrix" title="Link to this heading">#</a></h1>
+<p>(1\cdot1 - 1\cdot1)\mathbf{i}</p>
 <ul class="simple">
-<li><p>Vektor basis standar di 2D dan 3D adalah <strong>saling ortogonal</strong>.</p></li>
-<li><p>Dot product dua vektor ortogonal selalu bernilai <strong>nol (0)</strong>.</p></li>
+<li><p>(1\cdot1 - 1\cdot2)\mathbf{j}</p></li>
 </ul>
-</section>
-</section>
-</section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="vektor-satuan-di-mathbb-r-n">
-<h1>Vektor Satuan di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span><a class="headerlink" href="#vektor-satuan-di-mathbb-r-n" title="Link to this heading">#</a></h1>
-<p><strong>Definisi</strong></p>
-<p>Sebuah vektor <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> disebut sebagai <strong>vektor satuan</strong> jika norm (atau panjang) dari vektor tersebut adalah 1. Secara matematis:</p>
+<ul class="simple">
+<li><p>(1\cdot1 - 1\cdot2)\mathbf{k}
+$$</p></li>
+</ul>
 <div class="math notranslate nohighlight">
-\[\| \mathbf{u} \| = 1\]</div>
-<p>Di ruang <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>, untuk vektor <span class="math notranslate nohighlight">\(\mathbf{v} = \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix}\)</span>, normnya adalah:</p>
+\[
+= (0)\mathbf{i} - (-1)\mathbf{j} + (-1)\mathbf{k}
+= \mathbf{j} - \mathbf{k}
+\]</div>
+<p>Atau dalam bentuk vektor kolom:
+$<span class="math notranslate nohighlight">\(
+\vec{u} \times \vec{v} = \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+\)</span>$</p>
+<p>Catatan:
+$<span class="math notranslate nohighlight">\(
+\mathbf{i} \times \mathbf{j} \ne \mathbf{j} \times \mathbf{i}
+\)</span>$</p>
+<p><img alt="image-2.png" src="attachment:image-2.png" /></p>
+<section id="soal-1">
+<h2>SOAL 1<a class="headerlink" href="#soal-1" title="Link to this heading">#</a></h2>
+</section>
+<section id="luas-dari-jajaran-genjang-yang-ditentukan-oleh-vektor-u-1-2-dan-v-2-1-adalah">
+<h2>1. Luas dari jajaran genjang yang ditentukan oleh vektor <strong>u = [1, 2]</strong> dan <strong>v = [2, 1]</strong> adalah …<a class="headerlink" href="#luas-dari-jajaran-genjang-yang-ditentukan-oleh-vektor-u-1-2-dan-v-2-1-adalah" title="Link to this heading">#</a></h2>
+<p><strong>Jawaban:</strong></p>
 <div class="math notranslate nohighlight">
-\[\| \mathbf{v} \| = \sqrt{v_1^2 + v_2^2 + \dots + v_n^2}\]</div>
-<p>Untuk mendapatkan vektor satuan <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> yang searah dengan vektor tak-nol <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>, kita normalisasi <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{u} = \frac{\mathbf{v}}{\| \mathbf{v} \|}\]</div>
-<p><strong>Contoh di <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span></strong></p>
-<p>Diberikan vektor <span class="math notranslate nohighlight">\(\mathbf{v} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}\)</span>.</p>
-<ol class="arabic simple">
-<li><p>Hitung norm dari <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>:
-$<span class="math notranslate nohighlight">\(\| \mathbf{v} \| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\)</span>$</p></li>
-<li><p>Vektor satuan <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> searah dengan <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> adalah:
-$<span class="math notranslate nohighlight">\(\mathbf{u} = \frac{1}{5} \begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} 3/5 \\ 4/5 \end{bmatrix}\)</span>$</p></li>
-<li><p>Verifikasi bahwa <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> adalah vektor satuan:
-$<span class="math notranslate nohighlight">\(\| \mathbf{u} \| = \sqrt{\left(\frac{3}{5}\right)^2 + \left(\frac{4}{5}\right)^2} = \sqrt{\frac{9}{25} + \frac{16}{25}} = \sqrt{\frac{25}{25}} = 1\)</span>$</p></li>
-</ol>
-<p><strong>Vektor Basis Standar di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></strong></p>
-<p>Vektor-vektor basis standar di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> merupakan contoh vektor satuan yang saling ortogonal:</p>
+\[
+\text{Luas} = |u \times v| = |(1)(1) - (2)(2)| = |1 - 4| = \boxed{3}
+\]</div>
+</section>
+<section id="luas-dari-jajaran-genjang-yang-ditentukan-oleh-vektor-u-2-0-0-dan-v-0-0-3-adalah">
+<h2>2. Luas dari jajaran genjang yang ditentukan oleh vektor <strong>u = [2, 0, 0]</strong> dan <strong>v = [0, 0, 3]</strong> adalah …<a class="headerlink" href="#luas-dari-jajaran-genjang-yang-ditentukan-oleh-vektor-u-2-0-0-dan-v-0-0-3-adalah" title="Link to this heading">#</a></h2>
+<p><strong>Jawaban:</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\mathbf{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}, \quad
-\mathbf{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}, \quad
-\dots, \quad
-\mathbf{e}_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}
+u \times v = 
+\begin{bmatrix}
+0 \cdot 3 - 0 \cdot 0 \\
+-(2 \cdot 3 - 0 \cdot 0) \\
+2 \cdot 0 - 0 \cdot 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+-6 \\
+0
+\end{bmatrix}
 \end{split}\]</div>
-<p>Setiap vektor basis standar <span class="math notranslate nohighlight">\(\mathbf{e}_i\)</span> memiliki norm 1:</p>
 <div class="math notranslate nohighlight">
-\[\| \mathbf{e}_i \| = 1\]</div>
-<p><img alt="image-3.png" src="attachment:image-3.png" /></p>
+\[
+|u \times v| = \sqrt{0^2 + (-6)^2 + 0^2} = \sqrt{36} = \boxed{6}
+\]</div>
+</section>
+<section id="luas-segitiga-dengan-titik-sudut-a-0-0-0-b-1-3-1-dan-c-2-1-1-adalah">
+<h2>3. Luas segitiga dengan titik sudut <strong>A(0,0,0)</strong>, <strong>B(1,3,-1)</strong>, dan <strong>C(2,1,1)</strong> adalah …<a class="headerlink" href="#luas-segitiga-dengan-titik-sudut-a-0-0-0-b-1-3-1-dan-c-2-1-1-adalah" title="Link to this heading">#</a></h2>
+<p><strong>Jawaban:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{AB} = \langle 1, 3, -1 \rangle \\
+\vec{AC} = \langle 2, 1, 1 \rangle
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{AB} \times \vec{AC} =
+\begin{vmatrix}
+i &amp; j &amp; k \\
+1 &amp; 3 &amp; -1 \\
+2 &amp; 1 &amp; 1
+\end{vmatrix}
+=
+i(3 \cdot 1 - (-1)\cdot1) - j(1\cdot1 - (-1)\cdot2) + k(1\cdot1 - 3\cdot2)
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+= i(4) - j(3) + k(-5) = \langle 4, -3, -5 \rangle
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+|\vec{AB} \times \vec{AC}| = \sqrt{4^2 + (-3)^2 + (-5)^2} = \sqrt{16 + 9 + 25} = \sqrt{50}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{Luas segitiga} = \frac{1}{2} \cdot \sqrt{50} = \boxed{\frac{\sqrt{50}}{2} \approx 3.54}
+\]</div>
+</section>
+<section id="luas-segitiga-dengan-titik-sudut-a-5-2-1-b-3-6-2-dan-c-1-0-4-adalah">
+<h2>4. Luas segitiga dengan titik sudut <strong>A(5,2,-1)</strong>, <strong>B(3,6,2)</strong>, dan <strong>C(1,0,4)</strong> adalah …<a class="headerlink" href="#luas-segitiga-dengan-titik-sudut-a-5-2-1-b-3-6-2-dan-c-1-0-4-adalah" title="Link to this heading">#</a></h2>
+<p><strong>Jawaban:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{AB} = \langle -2, 4, 3 \rangle \\
+\vec{AC} = \langle -4, -2, 5 \rangle
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{AB} \times \vec{AC} =
+\begin{vmatrix}
+i &amp; j &amp; k \\
+-2 &amp; 4 &amp; 3 \\
+-4 &amp; -2 &amp; 5
+\end{vmatrix}
+=
+i(4\cdot5 - 3\cdot(-2)) - j(-2\cdot5 - 3\cdot(-4)) + k(-2\cdot(-2) - 4\cdot(-4))
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+= i(20 + 6) - j(-10 + 12) + k(4 + 16) = \langle 26, -2, 20 \rangle
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+|\vec{AB} \times \vec{AC}| = \sqrt{26^2 + (-2)^2 + 20^2} = \sqrt{676 + 4 + 400} = \sqrt{1080}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{Luas segitiga} = \frac{1}{2} \cdot \sqrt{1080} = \boxed{\frac{\sqrt{1080}}{2} \approx 16.43}
+\]</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -548,22 +683,13 @@ $<span class="math notranslate nohighlight">\(\| \mathbf{u} \| = \sqrt{\left(\fr
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="eigendanorto.html"
+       href="perkaliantitik%28dotproduct%29.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">EIGEN (value &amp; vektor) dan ORTO (normal &amp; gonal)</p>
+        <p class="prev-next-title">PERKALIAN TITIK (Dot Product)</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="crossproduct.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -581,22 +707,46 @@ $<span class="math notranslate nohighlight">\(\| \mathbf{u} \| = \sqrt{\left(\fr
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PERKALIAN TITIK (Dot Product)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi">Definisi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-basis-2d-dan-3d">Dot Product Basis 2D dan 3D</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-2d">Basis 2D</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-3d">Basis 3D</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-semua-pasangan-dot-product">Hitung semua pasangan dot product:</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PERKALIAN SILANG DUA VEKTOR (CROSS PRDUCT)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maka-vec-v-times-vec-u-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-v-1-v-2-v-3-u-1-u-2-u-3-end-vmatrix">Maka:
+$$
+\vec{v} \times \vec{u} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \
+v_1 &amp; v_2 &amp; v_3 \
+u_1 &amp; u_2 &amp; u_3
+\end{vmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh:</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maka-vec-v-times-vec-u-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-1-0-0-0-1-0-end-vmatrix">Maka:
+$$
+\vec{v} \times \vec{u} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \
+1 &amp; 0 &amp; 0 \
+0 &amp; 1 &amp; 0
+\end{vmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitas-cross-product">Identitas Cross Product:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perkalian-titik-dot-product">Perkalian Titik (Dot Product):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-cross-product-lanjutan">Contoh Cross Product Lanjutan</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maka-vec-u-times-vec-v-begin-vmatrix-mathbf-i-mathbf-j-mathbf-k-1-1-1-2-1-1-end-vmatrix">Maka:
+$$
+\vec{u} \times \vec{v} =
+\begin{vmatrix}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \
+1 &amp; 1 &amp; 1 \
+2 &amp; 1 &amp; 1
+\end{vmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soal-1">SOAL 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luas-dari-jajaran-genjang-yang-ditentukan-oleh-vektor-u-1-2-dan-v-2-1-adalah">1. Luas dari jajaran genjang yang ditentukan oleh vektor <strong>u = [1, 2]</strong> dan <strong>v = [2, 1]</strong> adalah …</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luas-dari-jajaran-genjang-yang-ditentukan-oleh-vektor-u-2-0-0-dan-v-0-0-3-adalah">2. Luas dari jajaran genjang yang ditentukan oleh vektor <strong>u = [2, 0, 0]</strong> dan <strong>v = [0, 0, 3]</strong> adalah …</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luas-segitiga-dengan-titik-sudut-a-0-0-0-b-1-3-1-dan-c-2-1-1-adalah">3. Luas segitiga dengan titik sudut <strong>A(0,0,0)</strong>, <strong>B(1,3,-1)</strong>, dan <strong>C(2,1,1)</strong> adalah …</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luas-segitiga-dengan-titik-sudut-a-5-2-1-b-3-6-2-dan-c-1-0-4-adalah">4. Luas segitiga dengan titik sudut <strong>A(5,2,-1)</strong>, <strong>B(3,6,2)</strong>, dan <strong>C(1,0,4)</strong> adalah …</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vektor-satuan-di-mathbb-r-n">Vektor Satuan di <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
 </ul>
 
   </nav></div>
